@@ -1,0 +1,12 @@
+﻿Build started 22/08/2015 12:40:45.
+     1>Project "c:\Temp\visual studio 2013\Projects\01 - Servidor Interativo\01 - Servidor Interativo\01 - Servidor Interativo.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source.cpp
+         Source.cpp
+     1>c:\temp\visual studio 2013\projects\01 - servidor interativo\01 - servidor interativo\source.cpp(19): error C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+                 c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(1850) : see declaration of 'inet_addr'
+     1>Done Building Project "c:\Temp\visual studio 2013\Projects\01 - Servidor Interativo\01 - Servidor Interativo\01 - Servidor Interativo.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.75

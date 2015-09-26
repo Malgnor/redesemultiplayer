@@ -1,0 +1,15 @@
+﻿Build started 12/09/2015 12:30:13.
+     1>Project "c:\Temp\visual studio 2013\Projects\SendObject\ObjectTest\ObjectTest.vcxproj" on node 3 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Teste.cpp
+         Teste.cpp
+     1>c:\temp\visual studio 2013\projects\sendobject\objecttest\teste.cpp(13): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\string.h(112) : see declaration of 'strcpy'
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"c:\temp\visual studio 2013\Projects\SendObject\Debug\ObjectTest.lib" /NOLOGO Debug\Teste.obj
+         ObjectTest.vcxproj -> c:\temp\visual studio 2013\Projects\SendObject\Debug\ObjectTest.lib
+     1>Done Building Project "c:\Temp\visual studio 2013\Projects\SendObject\ObjectTest\ObjectTest.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.78

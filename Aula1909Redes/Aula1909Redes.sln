@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ServidorTCP", "ServidorTCP\ServidorTCP.vcxproj", "{8E49AFD7-0495-4801-87A0-6E000871E380}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ClienteTCP", "ClienteTCP\ClienteTCP.vcxproj", "{3593838E-8F64-44AE-934D-DFED0FB80362}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ServidorUDP", "ServidorUDP\ServidorUDP.vcxproj", "{2B5ADDF4-FE2D-4D94-B186-C33B5949144E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ClienteUDP", "ClienteUDP\ClienteUDP.vcxproj", "{1A7AC7F7-7386-42D2-86F3-25167EC25669}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SendFileTCP", "SendFileTCP\SendFileTCP.vcxproj", "{0C25B3B8-CED9-46FF-872A-DA29D5B88FE5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ReceiveFileTCP", "ReceiveFileTCP\ReceiveFileTCP.vcxproj", "{4F5144C4-1A0B-4C9D-81FA-1B884461E911}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8E49AFD7-0495-4801-87A0-6E000871E380}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8E49AFD7-0495-4801-87A0-6E000871E380}.Debug|Win32.Build.0 = Debug|Win32
+		{8E49AFD7-0495-4801-87A0-6E000871E380}.Release|Win32.ActiveCfg = Release|Win32
+		{8E49AFD7-0495-4801-87A0-6E000871E380}.Release|Win32.Build.0 = Release|Win32
+		{3593838E-8F64-44AE-934D-DFED0FB80362}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3593838E-8F64-44AE-934D-DFED0FB80362}.Debug|Win32.Build.0 = Debug|Win32
+		{3593838E-8F64-44AE-934D-DFED0FB80362}.Release|Win32.ActiveCfg = Release|Win32
+		{3593838E-8F64-44AE-934D-DFED0FB80362}.Release|Win32.Build.0 = Release|Win32
+		{2B5ADDF4-FE2D-4D94-B186-C33B5949144E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2B5ADDF4-FE2D-4D94-B186-C33B5949144E}.Debug|Win32.Build.0 = Debug|Win32
+		{2B5ADDF4-FE2D-4D94-B186-C33B5949144E}.Release|Win32.ActiveCfg = Release|Win32
+		{2B5ADDF4-FE2D-4D94-B186-C33B5949144E}.Release|Win32.Build.0 = Release|Win32
+		{1A7AC7F7-7386-42D2-86F3-25167EC25669}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1A7AC7F7-7386-42D2-86F3-25167EC25669}.Debug|Win32.Build.0 = Debug|Win32
+		{1A7AC7F7-7386-42D2-86F3-25167EC25669}.Release|Win32.ActiveCfg = Release|Win32
+		{1A7AC7F7-7386-42D2-86F3-25167EC25669}.Release|Win32.Build.0 = Release|Win32
+		{0C25B3B8-CED9-46FF-872A-DA29D5B88FE5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0C25B3B8-CED9-46FF-872A-DA29D5B88FE5}.Debug|Win32.Build.0 = Debug|Win32
+		{0C25B3B8-CED9-46FF-872A-DA29D5B88FE5}.Release|Win32.ActiveCfg = Release|Win32
+		{0C25B3B8-CED9-46FF-872A-DA29D5B88FE5}.Release|Win32.Build.0 = Release|Win32
+		{4F5144C4-1A0B-4C9D-81FA-1B884461E911}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4F5144C4-1A0B-4C9D-81FA-1B884461E911}.Debug|Win32.Build.0 = Debug|Win32
+		{4F5144C4-1A0B-4C9D-81FA-1B884461E911}.Release|Win32.ActiveCfg = Release|Win32
+		{4F5144C4-1A0B-4C9D-81FA-1B884461E911}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
