@@ -75,6 +75,22 @@ int main(){
 			return 1;
 		}
 
+		fseek(file, 0L, SEEK_END);
+		long tamanhoExecCliente = ftell(file);
+
+		send(clienteSocket, (char*)&tamanhoExecCliente, sizeof(long), NULL);
+
+		char buffer[512];
+		int bytesLidos = 0;
+
+		while (bytesLidos <= tamanhoExecCliente){
+
+			fread(buffer, sizeof(char), 512, file);
+
+			send(clienteSocket, buffer + bytesLidos, tamanhoExecCliente - bytesLidos, 0);
+
+		}
+
 	}
 
 	closesocket(principalSocket);
