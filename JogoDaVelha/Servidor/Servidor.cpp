@@ -49,6 +49,12 @@ int main(){
 	sockaddr_in clienteEndereco;
 	int clienteEnderecoTam = sizeof(sockaddr_in);
 
+	int cerquilha[3][3];
+	for (int i = 0; i < 3; i++){
+		for (int j = 0; j < 3; j++){
+			cerquilha[i][j] = -1;
+		}
+	}
 	for (;;){
 		for (int i = 0; i < 2; i++){
 			clienteSocket[i] = accept(principalSocket, (sockaddr*)&clienteEndereco, &clienteEnderecoTam);
@@ -58,7 +64,16 @@ int main(){
 		int comando = CMD_ENVIAR_JOGADA_REQUEST;
 		send(clienteSocket[jogador], (char*)&comando, sizeof(int), NULL);
 		for (;;){
+			recv(clienteSocket[jogador], (char*)&comando, sizeof(int), NULL);
+			switch (comando)
+			{
+			case CMD_ENVIAR_JOGADA_RESPOSTA:
+				int jogada[2];
+				recv(clienteSocket[jogador], (char*)jogada, sizeof(int)*2, NULL);
+				cerquilha[jogada[0]][jogada[1]] = jogador;
 
+				break;
+			}
 		}
 	}
 
