@@ -7,6 +7,13 @@
 #include <sstream>
 #include <exception>
 
+#define PORTA_SERVIDOR 9000
+
+enum Comandos {
+	NUMERO_ULTIMA_VERSAO_CLIENTE_REQ,
+	EXECUTAR_ULTIMAR_VERSAO_CLIENTE_REQ
+};
+
 int MsgErro(char* msg){
 	std::cout << "(" << msg << ")Error code: " << WSAGetLastError() << std::endl;
 	system("pause");
@@ -50,7 +57,7 @@ int main(){
 		sockaddr_in enderecoServidor;
 		inet_pton(AF_INET, "0.0.0.0", &enderecoServidor.sin_addr);
 		enderecoServidor.sin_family = AF_INET;
-		enderecoServidor.sin_port = htons(9999);
+		enderecoServidor.sin_port = htons(PORTA_SERVIDOR);
 
 		SOCKET principalSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 
