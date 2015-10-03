@@ -5,6 +5,7 @@
 #include <thread>
 #include <chrono>
 #include <sstream>
+#include <exception>
 
 int MsgErro(char* msg){
 	std::cout << "(" << msg << ")Error code: " << WSAGetLastError() << std::endl;
