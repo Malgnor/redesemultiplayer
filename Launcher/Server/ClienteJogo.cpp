@@ -69,3 +69,7 @@ int ClienteJogo::Versao() const {
 	return m_versao;
 }
 
+ClienteJogo::~ClienteJogo(){
+	delete m_dados;
+}
+

@@ -1,8 +1,10 @@
+#include "ClienteJogo.h"
 #include <WinSock2.h>
 #include <WS2tcpip.h>
 #include <iostream>
-
-#define VERSAO_CLIENTE_ATUAL 1
+#include <thread>
+#include <chrono>
+#include <sstream>
 
 int MsgErro(char* msg){
 	std::cout << "(" << msg << ")Error code: " << WSAGetLastError() << std::endl;
@@ -10,93 +12,101 @@ int MsgErro(char* msg){
 	return 1;
 }
 
-int main(){
+void receberTcp(const SOCKET& socket, void* buffer, const long& tamanhoBuffer){
+	long bytesRecebidos = 0;
+	long totalBytesRecebidos = 0;
 
-
-	WSADATA wsaData;
-	int result;
-	result = WSAStartup(MAKEWORD(2, 2), &wsaData);
-
-	if (result != 0){
-		return MsgErro("WSAStartup");
-	}
-
-	sockaddr_in enderecoServidor;
-	inet_pton(AF_INET, "0.0.0.0", &enderecoServidor.sin_addr);
-	enderecoServidor.sin_family = AF_INET;
-	enderecoServidor.sin_port = htons(9999);
-
-	SOCKET principalSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-
-	if (principalSocket == INVALID_SOCKET){
-		return MsgErro("socket");
-	}
-
-	result = bind(principalSocket, (sockaddr*)&enderecoServidor, sizeof(enderecoServidor));
-
-	if (result == SOCKET_ERROR){
-		return MsgErro("bind");
-	}
-
-	result = listen(principalSocket, SOMAXCONN);
-
-	if (result == SOCKET_ERROR){
-		return MsgErro("listen");
-	}
-
-	sockaddr_in clienteEndereco;
-	int clienteEnderecoTam = sizeof(clienteEndereco);
-
-	SOCKET clienteSocket;
-	clienteSocket = accept(principalSocket, (sockaddr*)&clienteEndereco, &clienteEnderecoTam);
-
-	int versaoCliente;
-	int bytesRecebidos;
-	int totalBytesRecebidos = 0;
-	do{
-		bytesRecebidos = recv(clienteSocket, (char*)&versaoCliente + totalBytesRecebidos, sizeof(int) - totalBytesRecebidos, NULL);
+	do {
+		bytesRecebidos = recv(socket, (char*)buffer + totalBytesRecebidos, tamanhoBuffer - totalBytesRecebidos, NULL);
 
 		if (bytesRecebidos == SOCKET_ERROR || bytesRecebidos == 0){
-			return MsgErro("recv");
+			std::stringstream erro;
+			erro << __FUNCTION__
+				<< " - A conexão foi encerrado durante a transmissão de forma inesperada. "
+				<< WSAGetLastError()
+				<< std::endl;
+
+			throw std::runtime_error(erro.str());
 		}
 
 		totalBytesRecebidos += bytesRecebidos;
+	} while (totalBytesRecebidos != tamanhoBuffer);
+}
 
-	} while (totalBytesRecebidos != sizeof(int));
+int main(){
 
-	if (VERSAO_CLIENTE_ATUAL != versaoCliente){
-		FILE* file;
-		int e;
-		char path[255];
-		sprintf_s(path, "wow%d.exe", VERSAO_CLIENTE_ATUAL);
-		e = fopen_s(&file, path, "r");
+	try{
+		ClienteJogo* ultimoCliente = new ClienteJogo();
 
-		if (e == 0){
-			return 1;
+		WSADATA wsaData;
+		int result;
+		result = WSAStartup(MAKEWORD(2, 2), &wsaData);
+
+		if (result != 0){
+			return MsgErro("WSAStartup");
 		}
 
-		fseek(file, 0L, SEEK_END);
-		long tamanhoExecCliente = ftell(file);
+		sockaddr_in enderecoServidor;
+		inet_pton(AF_INET, "0.0.0.0", &enderecoServidor.sin_addr);
+		enderecoServidor.sin_family = AF_INET;
+		enderecoServidor.sin_port = htons(9999);
 
-		send(clienteSocket, (char*)&tamanhoExecCliente, sizeof(long), NULL);
+		SOCKET principalSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 
-		char buffer[512];
-		int bytesLidos = 0;
-
-		while (bytesLidos <= tamanhoExecCliente){
-
-			fread(buffer, sizeof(char), 512, file);
-
-			send(clienteSocket, buffer + bytesLidos, tamanhoExecCliente - bytesLidos, 0);
-
+		if (principalSocket == INVALID_SOCKET){
+			return MsgErro("socket");
 		}
 
+		result = bind(principalSocket, (sockaddr*)&enderecoServidor, sizeof(enderecoServidor));
+
+		if (result == SOCKET_ERROR){
+			return MsgErro("bind");
+		}
+
+		result = listen(principalSocket, SOMAXCONN);
+
+		if (result == SOCKET_ERROR){
+			return MsgErro("listen");
+		}
+
+		sockaddr_in clienteEndereco;
+		int clienteEnderecoTam = sizeof(clienteEndereco);
+
+		SOCKET clienteSocket;
+
+		for (;;){
+	
+			clienteSocket = accept(principalSocket, (sockaddr*)&clienteEndereco, &clienteEnderecoTam);
+
+			for (;;){
+				try{
+					int comando;
+					int ultimaVersaoCliente;
+					receberTcp(clienteSocket, &comando, sizeof(int));
+
+					switch (comando)
+					{
+					default:
+						break;
+					}
+				}
+				catch (std::exception& ex){
+					std::cout << ex.what();
+					break;
+				}
+			}
+		}
+
+		int 
+
+		closesocket(principalSocket);
+
+		WSACleanup();
 	}
-
-	closesocket(principalSocket);
-
-	WSACleanup();
-
-	system("pause");
+	catch (std::exception& ex){
+		std::cout << ex.what();
+		system("pause");
+		return 1;
+	}
 	return 0;
 }
