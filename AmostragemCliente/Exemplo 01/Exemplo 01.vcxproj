@@ -86,10 +86,7 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Megaman_sprite.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Media Include="bomba.wav" />
+    <Image Include="cursor.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

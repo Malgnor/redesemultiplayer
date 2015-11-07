@@ -59,13 +59,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Megaman_sprite.jpg">
+    <Image Include="cursor.png">
       <Filter>Resource Files</Filter>
     </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <Media Include="bomba.wav">
-      <Filter>Resource Files</Filter>
-    </Media>
   </ItemGroup>
 </Project>
